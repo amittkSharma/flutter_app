@@ -1,26 +1,18 @@
 import 'package:flutter/material.dart';
+import './utils/snackbar.dart';
+import './utils/navdrawer.dart';
 
 class AppHome extends StatelessWidget {
   void onCameraClicked(BuildContext context) {
-    final snackBar = SnackBar(
-      content: Text('Yay !, A camera is clicked'),
-      action: SnackBarAction(
-        label: 'Undo',
-        onPressed: () => print('Close the snack bar from the button'),
-      ),
-    );
-    Scaffold.of(context).showSnackBar(snackBar);
+    var appSnackbar = new AppSnackbar();
+    appSnackbar.appShowSnackBar(context, 'Camera Button is clicked...', 'Undo');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: new AppDrawer(),
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.menu),
-          tooltip: 'Navigation menu',
-          onPressed: null,
-        ),
         title: Text('QRs List'),
         actions: <Widget>[
           IconButton(
@@ -29,6 +21,7 @@ class AppHome extends StatelessWidget {
               onPressed: () => this.onCameraClicked(context)),
         ],
       ),
+      body: Center(child: Text('My Page!')),
     );
   }
 }

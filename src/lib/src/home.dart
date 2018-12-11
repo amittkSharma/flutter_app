@@ -1,28 +1,24 @@
 import 'package:flutter/material.dart';
-import './utils/snackbar.dart';
 import './utils/navdrawer.dart';
 import './details.dart';
 
 class AppHome extends StatelessWidget {
-  void onCameraClicked(BuildContext context) {
-    var appSnackbar = new AppSnackbar();
-    appSnackbar.appShowSnackBar(context, 'Camera Button is clicked...', 'Undo');
+  void addNewItemsToDrawer(AppDrawer drawer) {
+    drawer.drawerItems['QR Details Page'] = DetailsPage(title: 'QR Details');
+    drawer.drawerItems['Barcode Details Page'] =
+        DetailsPage(title: 'Barcode Details');
+    drawer.drawerItems['Misc Details Page'] =
+        DetailsPage(title: 'Misc Details');
   }
 
   @override
   Widget build(BuildContext context) {
     var appDrawer = new AppDrawer();
-    appDrawer.screens.add(DetailsPage());
+    addNewItemsToDrawer(appDrawer);
     return Scaffold(
       drawer: appDrawer,
       appBar: AppBar(
         title: Text('Home Page'),
-        actions: <Widget>[
-          IconButton(
-              icon: Icon(Icons.camera),
-              tooltip: 'Camera Open!',
-              onPressed: () => this.onCameraClicked(context)),
-        ],
       ),
       body: Center(child: Text('My Page!')),
     );

@@ -1,42 +1,34 @@
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatefulWidget {
-  final List<StatelessWidget> screens = [];
+  final Map<String, StatefulWidget> drawerItems = new Map();
 
   @override
   _AppDrawerState createState() => new _AppDrawerState();
 }
 
 class _AppDrawerState extends State<AppDrawer> {
-  @override
-  Widget build(BuildContext context) {
-    return new Drawer(
-        child: new ListView(
-      children: <Widget>[
-        DrawerHeader(
-          child: new Text('App Header....'),
-          decoration: BoxDecoration(
-            color: Colors.blue,
-          ),
-        ),
-        ListTile(
-          title: new Text('QRs'),
-          onTap: () => print('Item 1'),
-        ),
-        ListTile(
-          title: new Text('Barcodes'),
+  List<ListTile> generateListTiles(Map<String, StatefulWidget> drawerItems) {
+    var list = new List<ListTile>();
+    for (var key in drawerItems.keys) {
+      var tile = new ListTile(
+          title: new Text(key),
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => widget.screens[0]),
+              MaterialPageRoute(builder: (context) => drawerItems[key]),
             );
-          },
-        ),
-        ListTile(
-          title: new Text('Others'),
-          onTap: () => print('Item 3'),
-        )
-      ],
-    ));
+          });
+
+      list.add(tile);
+    }
+
+    return list;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new Drawer(
+        child: new ListView(children: generateListTiles(widget.drawerItems)));
   }
 }

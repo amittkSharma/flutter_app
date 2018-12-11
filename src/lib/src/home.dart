@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './utils/snackbar.dart';
 import './utils/navdrawer.dart';
+import './details.dart';
 
 class AppHome extends StatelessWidget {
   void onCameraClicked(BuildContext context) {
@@ -10,10 +11,12 @@ class AppHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var appDrawer = new AppDrawer();
+    appDrawer.screens.add(DetailsPage());
     return Scaffold(
-      drawer: new AppDrawer(),
+      drawer: appDrawer,
       appBar: AppBar(
-        title: Text('QRs List'),
+        title: Text('Home Page'),
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.camera),

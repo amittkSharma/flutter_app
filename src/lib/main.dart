@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
       title: 'Welcome to flutter',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Home page'),
+          title: Text('Reader App'),
         ),
         body: AppHome(),
       ),

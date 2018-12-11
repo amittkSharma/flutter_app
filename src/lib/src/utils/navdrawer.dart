@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatefulWidget {
+  final List<StatelessWidget> screens = [];
+
   @override
   _AppDrawerState createState() => new _AppDrawerState();
 }
@@ -18,15 +20,20 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
         ),
         ListTile(
-          title: new Text('Item 1'),
+          title: new Text('QRs'),
           onTap: () => print('Item 1'),
         ),
         ListTile(
-          title: new Text('Item 2'),
-          onTap: () => print('Item 2'),
+          title: new Text('Barcodes'),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => widget.screens[0]),
+            );
+          },
         ),
         ListTile(
-          title: new Text('Item 3'),
+          title: new Text('Others'),
           onTap: () => print('Item 3'),
         )
       ],

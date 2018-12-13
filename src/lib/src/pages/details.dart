@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import './libraries/barcode-scanner.dart';
+import '../libraries/barcode-scanner.dart';
 
 class DetailsPage extends StatefulWidget {
   final String title;
-  List<String> codes = new List<String>();
+  final List<String> codes = new List<String>();
   DetailsPage({this.title});
 
   @override
@@ -20,25 +20,39 @@ class _AppDetailsPage extends State<DetailsPage> {
     });
   }
 
+  List<ListTile> generateListTiles() {
+    var list = new List<ListTile>();
+    for (var key in widget.codes) {
+      var tile = new ListTile(
+        title: new Text(key),
+        subtitle: new Text(new DateTime.now().toString()),
+      );
+
+      list.add(tile);
+    }
+
+    return list;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        leading: Text(widget.codes.length.toString()),
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.camera),
               tooltip: 'Camera Open!',
-              onPressed: () => this.onCameraClicked(context)),
+              onPressed: () => onCameraClicked(context)),
         ],
       ),
       body: Center(
         child: RaisedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text(widget.codes.length.toString()),
-        ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: new ListView(children: generateListTiles())),
       ),
     );
   }

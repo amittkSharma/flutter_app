@@ -2,13 +2,13 @@
 
 ## Technical Stacks under consideration:
 
-- Native Scripts
+- [Native Scripts](https://www.nativescript.org/)
   - Native scripts uses Javascript to build native apps. It comes along with Angular and Vue.js. The community for Angular is not as active as Vue.js.
   - It works with it's own pre-defined components rather than HTML
   - Restyling of components is very difficult, component set is limited too.
   - Components do not exists on both platforms, need to be maintenance for those.
-- Ionic Framework
-- Flutter.io and Dart
+- [Ionic Framework](https://ionicframework.com/)
+- [Flutter.io](https://flutter.io/) and [Dart](https://www.dartlang.org/)
   - SDK and framework for DART
   - Compilles down to native code that runs on target device, no additional tool chain is required.
   - In-built functionalities:
@@ -35,6 +35,11 @@
   ![Image](https://raw.githubusercontent.com/amittkSharma/flutter_app/develop/documents/images/AccessingNativeDeviceFeatures.PNG)
 - Real world usage
   ![Image](https://raw.githubusercontent.com/amittkSharma/flutter_app/develop/documents/images/RealworldUsage.PNG)
+
+## Suggestion
+
+- Based on the above evaluation and also looking bit around _flutter.io_ seems to be winnig the race in comparison of features available and performance.
+- Flutter only lags in the community support or some third party libraries.
 
 ## Source of information
 

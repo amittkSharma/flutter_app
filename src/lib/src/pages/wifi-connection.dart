@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wifi/wifi.dart';
 import '../interfaces/IWifiConnection.dart';
+import '../utils/snackbar.dart';
 
 class WiFiPage extends StatefulWidget {
   @override
@@ -15,7 +16,7 @@ class _WiFiState extends State<WiFiPage> {
     List<dynamic> ssidList = await Wifi.list('');
     ssidList.forEach((ssid) => setState(() {
           var connection = new WifiConnection();
-          connection.isConnected = ssid == 'HaLlMaRk' ? true : false;
+          connection.isConnected = false;
           connection.ssid = ssid;
           wifiConnections.add(connection);
         }));
@@ -42,20 +43,33 @@ class _WiFiState extends State<WiFiPage> {
           itemBuilder: (context, index) => Padding(
                 padding: EdgeInsets.all(8.0),
                 child: ListTile(
-                  title: Text(wifiConnections[index].ssid),
-                  subtitle: Text(wifiConnections[index].isConnected.toString()),
-                  onTap: () {
-                    print(wifiConnections[index]);
-                  },
-                  trailing: Icon(
-                    wifiConnections[index].isConnected
-                        ? Icons.cast_connected
-                        : Icons.signal_wifi_off,
-                    color: wifiConnections[index].isConnected
-                        ? Colors.green
-                        : Colors.red,
-                  ),
-                ),
+                    title: Text(wifiConnections[index].ssid),
+                    subtitle:
+                        Text(wifiConnections[index].isConnected.toString()),
+                    onTap: () {
+                      print(wifiConnections[index]);
+                    },
+                    trailing: Column(children: <Widget>[
+                      Icon(
+                        wifiConnections[index].isConnected
+                            ? Icons.cast_connected
+                            : Icons.signal_wifi_off,
+                        color: wifiConnections[index].isConnected
+                            ? Colors.green
+                            : Colors.red,
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.thumbs_up_down),
+                        tooltip: 'connect to network',
+                        onPressed: () {
+                          var app = new AppSnackbar();
+                          app.appShowSnackBar(
+                              context,
+                              'Connect to ${wifiConnections[index].ssid}',
+                              'Connect');
+                        },
+                      )
+                    ])),
               ),
         ),
       ),

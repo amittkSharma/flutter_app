@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wifi/wifi.dart';
 import '../interfaces/IWifiConnection.dart';
 import '../utils/snackbar.dart';
+import '../utils/usernanme-pwd.dart';
 
 class WiFiPage extends StatefulWidget {
   @override
@@ -66,7 +67,13 @@ class _WiFiState extends State<WiFiPage> {
                           app.appShowSnackBar(
                               context,
                               'Connect to ${wifiConnections[index].ssid}',
-                              'Connect');
+                              'Connect', () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => UsernamePwdForm()),
+                            );
+                          });
                         },
                       )
                     ])),

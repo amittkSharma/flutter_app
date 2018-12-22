@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
+typedef void OnPressedEventFn();
+
 class AppSnackbar {
-  appShowSnackBar(BuildContext context, String message, String btnText) {
+  appShowSnackBar(BuildContext context, String message, String btnText,
+      OnPressedEventFn f) {
     final snackBar = SnackBar(
       content: Text(message),
       action: SnackBarAction(
         label: btnText,
-        onPressed: () => print('Close the snack bar from the button'),
+        onPressed: f,
       ),
     );
     Scaffold.of(context).showSnackBar(snackBar);

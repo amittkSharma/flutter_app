@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import '../utils/navdrawer.dart';
 import './details.dart';
+import './wifi-connection.dart';
+import './listpage.dart';
 
 class AppHome extends StatelessWidget {
   void addNewItemsToDrawer(AppDrawer drawer) {
     drawer.drawerItems['Barcode Page'] = DetailsPage(title: 'Barcodes');
     drawer.drawerItems['QR Page'] = DetailsPage(title: 'QRs');
+    drawer.drawerItems['WiFi Devices'] = WiFiPage();
+    drawer.drawerItems['Http Example'] = ListPage();
   }
 
   @override

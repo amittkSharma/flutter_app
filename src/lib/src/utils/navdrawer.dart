@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatefulWidget {
-  final Map<String, StatefulWidget> drawerItems = new Map();
+  final Map<String, Widget> drawerItems = new Map();
 
   @override
   _AppDrawerState createState() => new _AppDrawerState();
 }
 
 class _AppDrawerState extends State<AppDrawer> {
-  List<ListTile> generateListTiles(Map<String, StatefulWidget> drawerItems) {
+  List<ListTile> generateListTiles(Map<String, Widget> drawerItems) {
     var list = new List<ListTile>();
     for (var key in drawerItems.keys) {
       var tile = new ListTile(

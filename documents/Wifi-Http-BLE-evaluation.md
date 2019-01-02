@@ -12,6 +12,7 @@ In order to evaluate the WiFi packages following things have been considered:
 
 - [WiFi](https://pub.dartlang.org/packages/wifi) and [Connectivity](https://pub.dartlang.org/packages/connectivity) packages are evaluated. WiFi package is responsible fo getting the list of all available WiFi connections and connecting a specific one using the SSID and password
 - Connectivity package is used to check the status of connection, whether app is connected to any internet or not. If yes to which one WiFi or mobile.
+
   ![Image](https://raw.githubusercontent.com/amittkSharma/flutter_app/develop/documents/images/app_wifi_connections_list_sample.jpg)
 
 ## Http Evaluation

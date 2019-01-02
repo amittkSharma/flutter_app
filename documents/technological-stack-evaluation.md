@@ -1,6 +1,6 @@
 # Technological Stack Evaluation
 
-## Technical Stacks under consideration:
+## Technical Stacks under consideration
 
 - [Native Scripts](https://www.nativescript.org/)
   - Native scripts uses Javascript to build native apps. It comes along with Angular and Vue.js. The community for Angular is not as active as Vue.js.
